@@ -2,16 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/action_home"
-        android:enabled="true"
-        android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/menu_home"/>
-
-    <item
         android:id="@+id/action_search"
         android:enabled="true"
         android:icon="@drawable/ic_search_black_24dp"
         android:title="@string/menu_searching"/>
+
+    <item
+        android:id="@+id/action_home"
+        android:enabled="true"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/menu_home"/>
 
     <item
         android:id="@+id/action_webView"
