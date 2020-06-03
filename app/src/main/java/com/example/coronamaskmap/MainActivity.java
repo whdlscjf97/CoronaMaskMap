@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private home_fragment home;
     private search_fragment search;
     private webView_fragment web;
+    private BackPressCloseHandler backPressCloseHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
         setFrag(0);
 
+        backPressCloseHandler = new BackPressCloseHandler(this);
     }
 
     // 프래그먼트 교체 실행문
@@ -73,5 +75,10 @@ public class MainActivity extends AppCompatActivity {
                 ft.commit();
                 break;
         }
+    }
+
+    @Override
+    public void onBackPressed(){
+        backPressCloseHandler.onBackPressed();
     }
 }
