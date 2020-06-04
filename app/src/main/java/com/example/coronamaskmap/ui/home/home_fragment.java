@@ -10,6 +10,13 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.coronamaskmap.R;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -18,16 +25,80 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class home_fragment extends Fragment {
-    View view;
+    private View view;
+    private MapView mapView = null;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.home_fragment, container, false);
 
+        mapView = (MapView)view.findViewById(R.id.map);
+        mapView.onCreate(savedInstanceState);
+        mapView.onResume();
+
+        try {
+            MapsInitializer.initialize(getActivity().getApplicationContext());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        mapView.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(GoogleMap googleMap) {
+                LatLng location = new LatLng(37.485284, 126.901451); // 구로 디지털단지역 위치
+                MarkerOptions markerOptions = new MarkerOptions();
+                markerOptions.title("구로디지털단지역");
+                markerOptions.snippet("전철역");
+                markerOptions.position(location);
+                googleMap.addMarker(markerOptions);
+
+                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 16));
+            }
+        });
         return view;
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        mapView.onStart();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        mapView.onStop();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        mapView.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mapView.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mapView.onPause();
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        mapView.onLowMemory();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mapView.onLowMemory();
+    }
     //retrofit Api를 통해 fetchstoreSale호출함
     private void fetchstoreSale(double lat, double lng, int m){
         //Retrofit Builder생성, addConverterFactory(GsonConverterFactory.create()) 전달된 json 형태를 자바 객채로 변환 시켜줌
