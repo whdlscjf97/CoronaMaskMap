@@ -1,4 +1,6 @@
 # 코로나 마스크 앱
+> 공적마스크 검색 어플리케이션입니다.   
+> Only For Android - 안드로이드 전용입니다.
 ### Api 출처
 'Google 클라우드플랫폼'에서 Maps SDK for Android를 사용(서비스 키를 등록하여 사용하십시오.)
 https://console.cloud.google.com/home/dashboard?project=coronamaskmap-279509&hl=ko
