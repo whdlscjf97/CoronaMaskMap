@@ -10,4 +10,5 @@
 ### 지도에 주변 약국 마커 표시
 ![maker](https://user-images.githubusercontent.com/63217165/83961171-8fa4ef80-a8cb-11ea-918e-199347f5ce8d.PNG)
 ### 웹뷰를 활용하여 코로나19 현황
+링크(https://coronaita.com/#/)를 사용했습니다.
 ![WebView](https://user-images.githubusercontent.com/63217165/83959727-75631580-a8bb-11ea-8706-cc63660fb337.PNG)
